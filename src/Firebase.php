@@ -209,7 +209,7 @@ class Firebase implements FirebaseInterface
             $googleClient = $this->getConfiguration()->getGoogleClient();
 
             $token = $googleClient->isAccessTokenExpired()
-                ? $googleClient->refreshTokenWithAssertion()
+                ? $googleClient->fetchTokenWithAssertion($this->getConfiguration()->getHttpClient())
                 : $googleClient->getAccessToken();
 
             $request = $request->withHeader('Authorization', 'Bearer '.$token['access_token']);

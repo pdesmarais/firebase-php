@@ -31,6 +31,8 @@ class Configuration implements ConfigurationInterface
      */
     private $httpAdapter;
 
+    private $httpClient;
+
     /**
      * @var LoggerInterface
      */
@@ -78,6 +80,18 @@ class Configuration implements ConfigurationInterface
     public function hasFirebaseSecret()
     {
         return (bool) $this->firebaseSecret;
+    }
+
+    public function setHttpClient($httpClient)
+    {
+        $this->httpClient = $httpClient;
+
+        return $this;
+    }
+
+    public function getHttpClient()
+    {
+        return $this->httpClient;
     }
 
     public function setHttpAdapter(HttpAdapterInterface $httpAdapter)
